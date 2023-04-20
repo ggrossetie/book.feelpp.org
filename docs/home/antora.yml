@@ -1,6 +1,6 @@
-name: feelpp
+name: home
 title: Feel++ Documentation
-version: 'latest'
+version: ~
 asciidoc:
   attributes:
     feelpp-stable-version : '0.110'

@@ -1,14 +1,12 @@
 site:
   title: Feel++ // Docs
   url: https://docs.feelpp.org
-  start_page: latest@feelpp::index.adoc
+  start_page: home::index.adoc
 content:
   sources:
   - url: ./
     branches: [develop]
-    start_path: docs/feelppdocs
-#    tags:
-#    - v0.109
+    start_path: docs/home
   - url: ./
     branches: develop
     start_path: docs/user
@@ -27,12 +25,12 @@ content:
 #    - v0.107
 #    - v0.106
 #    - v0.105
-  - url: ../feelpp-tutorial-dev
-    branches: master
-    start_path: docs/
-  - url: ../feelpp-project
-    branches: master
-    start_path: docs/
+#  - url: ../feelpp-tutorial-dev
+#    branches: master
+#    start_path: docs/
+#  - url: ../feelpp-project
+#    branches: master
+#    start_path: docs/
   - url: ./
     branches: develop
     start_path: docs/data
@@ -76,7 +74,8 @@ content:
 #    start_path: docs/mor/
 ui:
   bundle:
-    url: https://github.com/feelpp/antora-ui/releases/download/v0.1/ui-bundle.zip #https://gitlab.com/feelpp/antora-ui-default/-/jobs/artifacts/feelpp/raw/build/ui-bundle.zip?job=bundle-stable
+    #    url: https://github.com/feelpp/antora-ui/releases/download/v0.1/ui-bundle.zip #https://gitlab.com/feelpp/antora-ui-default/-/jobs/artifacts/feelpp/raw/build/ui-bundle.zip?job=bundle-stable
+    url: ../feelpp-antora-ui/build/ui-bundle.zip
     snapshot: true
   supplemental_files: supplemental-ui
 antora:
@@ -84,6 +83,7 @@ antora:
   - '@antora/collector-extension'
 asciidoc:
   attributes:
+    page-component-order: '!home, !ROOT, user, dev, data, math, toolboxes, cases, mor, *'
     feelpp-git-tag: develop
     deploymentRoot: ""
     numbered: true
