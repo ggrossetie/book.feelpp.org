@@ -142,3 +142,4 @@ asciidoc:
 #    - "@djencks/asciidoctor-tabset-block"
     - asciidoctor-kroki
     - ./lib/mpirun.js
+    - ./lib/vtkjs.js

@@ -163,3 +163,4 @@ asciidoc:
     - ./lib/tabs-block-extension
     - "@djencks/asciidoctor-template"
     - ./lib/mpirun.js
+    - ./lib/vtkjs.js
