@@ -14,7 +14,7 @@ In this 2D and 3D example, we
 * [x] export to the Ensight Gold format (the default {feelpp} format) of {feelpp}
 
 .Example to build a mesh and function space, create an element and visualize them in {paraview}
-[source,python]
+[%dynamic,python]
 ----
 import feelpp 
 import sys
@@ -22,7 +22,7 @@ app = feelpp.Environment(["myapp"],config=feelpp.localRepository("")) # <1>
 ----
 <1> The {feelpp} environment is initiated with the name of the application and the path to the local repository where the results will be stored.
 
-[source,python]
+[%dynamic,python]
 ----
 app.setLogVerbosityLevel(0) # <1>
 geofilename=feelpp.download( "github:{repo:feelpp,path:feelpp/quickstart/laplacian/cases/feelpp2d/feelpp2d.geo}", worldComm=app.worldCommPtr() )[0]
@@ -53,21 +53,13 @@ e.save()   # <11>
 <11> The exporter `e` is saved to the disk
 
 
-[%collapsible.result]
-.Results
-====
-----
-[loadMesh] Loading mesh in format geo+msh: "/Users/prudhomm/Downloads/feelppdb/downloads/feelpp2d.geo"
-[loadMesh] Use default geo desc: /Users/prudhomm/Downloads/feelppdb/downloads/feelpp2d.geo 0.1 
-----
-====
-
 The results are stored in the directory `feelppdb` and can be visualized with {paraview-website} or {ensight}. 
 
 INFO: The file `exports/ensightgold/myapp/myapp.case` can be opened directly in {paraview} or {ensight} to visualize the mesh and the fields.
 
-[source,python]
+[%dynamic%raw,python]
 ----
+import sys
 from xvfbwrapper import Xvfb
 vdisplay = Xvfb()
 vdisplay.start()
@@ -80,13 +72,10 @@ def pv_get_mesh(mesh_path):
     mesh = reader.read()
     return mesh
 def pv_plot(mesh, field="u", clim=None, cmap='viridis', cpos='xy', show_scalar_bar=True, show_edges=True):
-    mesh.plot(scalars=field, clim=clim, cmap=cmap, cpos=cpos, show_scalar_bar=show_scalar_bar, show_edges=show_edges)
+    mesh.plot(scalars=field, clim=clim, cmap=cmap, cpos=cpos, show_scalar_bar=show_scalar_bar, show_edges=show_edges, off_screen=True, screenshot=sys.stdout)
 
 mesh = pv_get_mesh(f"exports/ensightgold/Exporter/Exporter.case")
-pv_plot(mesh)
+r = pv_plot(mesh)
+print(r)
 ----
-
-
-
-
 
